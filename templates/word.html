@@ -8,6 +8,7 @@
             console.log('認証成功:', response);
             alert('');
             document.cookie = "yuki=True; path=/;";
+            location.reload();
             
             
         };
@@ -20,6 +21,7 @@
     alert("認証に成功、人間であるということが証明されました", token);
     document.cookie = "yuki=True; path=/;";
     window.location.href('/')
+    location.reload();
     }
     </script>
     <style>
@@ -47,7 +49,7 @@
      data-sitekey="{{token}}" 
      data-callback="onSuccess" 
      data-lang="ja"></div>
-    <p>URLの「word」を削除してください<br>重要:意味のない認証は禁止します、一度認証したらまた認証するのはやめてください</p>
+    <h1>認証 - hCaptcha</h1>
  </div>
     <br>
     
