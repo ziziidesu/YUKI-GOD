@@ -345,3 +345,5 @@ def search(q:str,response: Response,request: Request,page:Union[int,None]=1,yuki
 @app.get("/word", response_class=HTMLResponse)
 def home(response: Response,request: Request,yuki: Union[str] = Cookie(None)):
     return template("word.html",{"request": request,"token": token})
+if (check_cokie(yuki)):
+    return redirect("/")
