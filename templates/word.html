@@ -18,10 +18,14 @@
 
     <script>
         function onSuccess(token) {
-    alert("認証に成功、人間であるということが証明されました", token);
     document.cookie = "yuki=True; path=/;";
-    window.location.href('/')
-    location.reload();
+    location.reload(true);
+    }
+    </script>
+    <script>
+// ページをリロードする関数
+    function reloadPage() {
+     location.reload();
     }
     </script>
     <style>
@@ -49,7 +53,7 @@
      data-sitekey="{{token}}" 
      data-callback="onSuccess" 
      data-lang="ja"></div>
-    <h1>認証 - hCaptcha</h1>
+    <h1>　認証 - hCaptcha</h1><br><button onclick="reloadPage()">ページをリロード</button>
  </div>
     <br>
     
