@@ -347,4 +347,4 @@ def home(response: Response,request: Request,yuki: Union[str] = Cookie(None)):
     if (check_cokie(yuki)):
      return redirect("/")
     return template("word.html",{"request": request,"token": token})
-news.news()
+news.index()
