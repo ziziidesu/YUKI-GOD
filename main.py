@@ -166,7 +166,7 @@ from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from typing import Union
-import news
+
 
 app = FastAPI(docs_url=None, redoc_url=None, openapi_url=None)
 app.mount("/css", StaticFiles(directory="./css"), name="static")
@@ -353,4 +353,3 @@ def index():
     response = requests.get(url)
     articles = response.json().get('articles', [])
     return render_template('news.html', articles=articles)
-news.index()
