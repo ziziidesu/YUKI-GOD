@@ -166,7 +166,7 @@ from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from typing import Union
-
+import news
 
 app = FastAPI(docs_url=None, redoc_url=None, openapi_url=None)
 app.mount("/css", StaticFiles(directory="./css"), name="static")
@@ -347,17 +347,4 @@ def home(response: Response,request: Request,yuki: Union[str] = Cookie(None)):
     if (check_cokie(yuki)):
      return redirect("/")
     return template("word.html",{"request": request,"token": token})
-
-
-from flask import Flask, render_template
-import requests
-
-app = Flask(__name__)
-
-
-@app.route('/news')
-def index():
-    url = f'https://newsapi.org/v2/top-headlines?country=jp&apiKey=8d3db2a0f076426482dfc5b8787bad32'
-    response = requests.get(url)
-    articles = response.json().get('articles', [])
-    return render_template('news.html', articles=articles)
+news.news()
