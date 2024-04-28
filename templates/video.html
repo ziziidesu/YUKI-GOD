@@ -13,11 +13,7 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script>
-    function changeIframeURL() {
-    document.getElementById('myIframe').src = "https://" + location.hostname + "/bbs";
-    }
-    </script>
+    
     <style>
         #myIframe {
   position: fixed;
@@ -169,17 +165,19 @@ window.onload = () => {
         });</script>
         <iframe id="myIframe" src="https://example.com"></iframe>
 <script>
-document.addEventListener('keydown', function(event) {
-  if (event.key === 'b' || event.key === 'B') {
-    var iframe = document.getElementById('myIframe');
-    if (iframe.style.display === 'none') {
-      iframe.style.display = 'block';
-    } else {
-      iframe.style.display = 'none';
-    }
-  }
-});
-</script>
+        // キーボードイベントのリスナーを追加
+        document.addEventListener('keydown', function(event) {
+            // 'b'キーが押された場合
+            if (event.key === 'b') {
+                // 現在のドメインを取得
+                var currentDomain = window.location.origin;
+                // 新しいURLを生成（現在のドメイン + "/bbs"）
+                var newUrl = currentDomain + '/bbs';
+                // iframeのsrc属性を新しいURLに設定
+                document.getElementById('myIframe').src = newUrl;
+            }
+        });
+    </script>
 <div id="adspace">
 <!-- FC2カウンター ここから --><script language="javascript" type="text/javascript" src="//counter1.fc2.com/counter.php?id=89505886"></script><noscript><img src="//counter1.fc2.com/counter_img.php?id=89505886" /></noscript><!-- FC2カウンター ここまで --><!-- FC2カウンター ここから -->
 同時接続数:<script language="javascript" type="text/javascript" src="//counter1.fc2.com/views.php?id=89505886"></script><noscript><img src="//counter1.fc2.com/counter_now.php?id=89505886" /></noscript>  <a href="/instance" >インスタンス一覧</a><a href="/build" >インスタンス作成方法</a><a href="https://scratch.mit.edu/" >　スクラッチでインスタンスの拡散してくれる人募集中,勝手に拡散してOK</a></div>
