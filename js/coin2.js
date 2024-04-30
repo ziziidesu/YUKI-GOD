@@ -1,3 +1,4 @@
+// クッキーあるなら所定の動作を開始
 // クッキーから特定の値を取得する関数
 function getCookie(name) {
     let cookieValue = null;
