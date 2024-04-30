@@ -171,6 +171,7 @@ from typing import Union
 
 app = FastAPI(docs_url=None, redoc_url=None, openapi_url=None)
 app.mount("/css", StaticFiles(directory="./css"), name="static")
+app.mount("/js", StaticFiles(directory="./js"), name="static")
 
 app.add_middleware(GZipMiddleware, minimum_size=1000)
 
