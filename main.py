@@ -6,6 +6,7 @@ import datetime
 import random
 import os
 from cache import cache
+from googleapiclient.discovery import build
 
 token = my_secret = os.environ['hcaptcha']
 max_api_wait_time = 3
@@ -166,7 +167,7 @@ from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from typing import Union
-
+api_key = my_secret = os.environ['key']
 
 app = FastAPI(docs_url=None, redoc_url=None, openapi_url=None)
 app.mount("/css", StaticFiles(directory="./css"), name="static")
@@ -196,7 +197,12 @@ def video(v:str,response: Response,request: Request,yuki: Union[str] = Cookie(No
     videoid = v
     t = get_data(videoid)
     response.set_cookie("yuki","True",max_age=60 * 60 * 24 * 7)
-    return template('video.html', {"request": request,"videoid":videoid,"videourls":t[1],"res":t[0],"description":t[2],"videotitle":t[3],"authorid":t[4],"authoricon":t[6],"author":t[5],"proxy":proxy})
+    response = youtube.videos().list(
+      part='statistics',
+      id=videoid
+    ).execute()
+    like_count = response['items'][0]['statistics']['likeCount']
+    return template('video.html', {"request": request,"videoid":videoid,"videourls":t[1],"res":t[0],"description":t[2],"videotitle":t[3],"authorid":t[4],"authoricon":t[6],"author":t[5],"proxy":proxy,"like_count":like_count})
 
 @app.get("/search", response_class=HTMLResponse,)
 def search(q:str,response: Response,request: Request,page:Union[int,None]=1,yuki: Union[str] = Cookie(None),proxy: Union[str] = Cookie(None)):
@@ -328,20 +334,7 @@ def home(response: Response,request: Request,yuki: Union[str] = Cookie(None)):
     print(check_cokie(yuki))
     return redirect("/word")
 
-@app.get("/v", response_class=HTMLResponse)
-def home(response: Response,request: Request,yuki: Union[str] = Cookie(None)):
-    if check_cokie(vip):
-        response.set_cookie("vip","True",max_age=60 * 60 * 24 * 7)
-        return template("home-v.html",{"request": request})
-    print(check_cokie(vip))
-    return redirect("/word")
 
-@app.get("/search-v", response_class=HTMLResponse,)
-def search(q:str,response: Response,request: Request,page:Union[int,None]=1,yuki: Union[str] = Cookie(None),proxy: Union[str] = Cookie(None)):
-    if not(check_cokie(vip)):
-        return redirect("/")
-    response.set_cookie("vip","True",max_age=60 * 60 * 24 * 7)
-    return template("search-v.html", {"request": request,"results":get_search(q,page),"word":q,"next":f"/search-v?q={q}&page={page + 1}","proxy":proxy})
 @app.get("/word", response_class=HTMLResponse)
 def home(response: Response,request: Request,yuki: Union[str] = Cookie(None)):
     if (check_cokie(yuki)):
