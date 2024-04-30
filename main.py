@@ -197,12 +197,11 @@ def video(v:str,response: Response,request: Request,yuki: Union[str] = Cookie(No
     videoid = v
     t = get_data(videoid)
     response.set_cookie("yuki","True",max_age=60 * 60 * 24 * 7)
-    response = youtube.videos().list(
-      part='statistics',
-      id=videoid
-    ).execute()
-    like_count = response['items'][0]['statistics']['likeCount']
-    return template('video.html', {"request": request,"videoid":videoid,"videourls":t[1],"res":t[0],"description":t[2],"videotitle":t[3],"authorid":t[4],"authoricon":t[6],"author":t[5],"proxy":proxy,"like_count":like_count})
+    url = f'https://www.googleapis.com/youtube/v3/videos?part=statistics&id={videoid}&key={key}'
+    response = requests.get(url)
+    json_data = response.json()
+    likes = json_data['items'][0]['statistics']['likeCount']
+    return template('video.html', {"request": request,"videoid":videoid,"videourls":t[1],"res":t[0],"description":t[2],"videotitle":t[3],"authorid":t[4],"authoricon":t[6],"author":t[5],"proxy":proxy,"like_count":like})
 
 @app.get("/search", response_class=HTMLResponse,)
 def search(q:str,response: Response,request: Request,page:Union[int,None]=1,yuki: Union[str] = Cookie(None),proxy: Union[str] = Cookie(None)):
