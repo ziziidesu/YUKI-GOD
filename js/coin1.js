@@ -1,3 +1,4 @@
+// 許可するか質問
 // クッキーの値を取得
         function getCookie(name) {
             let matches = document.cookie.match(new RegExp(
