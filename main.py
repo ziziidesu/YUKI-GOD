@@ -197,7 +197,7 @@ def video(v:str,response: Response,request: Request,yuki: Union[str] = Cookie(No
     videoid = v
     t = get_data(videoid)
     response.set_cookie("yuki","True",max_age=60 * 60 * 24 * 7)
-    url = f'https://www.googleapis.com/youtube/v3/videos?part=statistics&id={videoid}&key={key}'
+    url = f'https://www.googleapis.com/youtube/v3/videos?part=statistics&id={t}&key={key}'
     response = requests.get(url)
     json_data = response.json()
     like = json_data['items'][0]['statistics']['likeCount']
