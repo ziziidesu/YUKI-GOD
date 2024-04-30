@@ -6,7 +6,7 @@ import datetime
 import random
 import os
 from cache import cache
-from googleapiclient.discovery import build
+
 
 token = my_secret = os.environ['hcaptcha']
 max_api_wait_time = 3
@@ -201,7 +201,7 @@ def video(v:str,response: Response,request: Request,yuki: Union[str] = Cookie(No
     response = requests.get(url)
     json_data = response.json()
     likes = json_data['items'][0]['statistics']['likeCount']
-    return template('video.html', {"request": request,"videoid":videoid,"videourls":t[1],"res":t[0],"description":t[2],"videotitle":t[3],"authorid":t[4],"authoricon":t[6],"author":t[5],"proxy":proxy,"like_count":like})
+    return template('video.html', {"request": request,"videoid":videoid,"videourls":t[1],"res":t[0],"description":t[2],"videotitle":t[3],"authorid":t[4],"authoricon":t[6],"author":t[5],"proxy":proxy,"likes":like})
 
 @app.get("/search", response_class=HTMLResponse,)
 def search(q:str,response: Response,request: Request,page:Union[int,None]=1,yuki: Union[str] = Cookie(None),proxy: Union[str] = Cookie(None)):
