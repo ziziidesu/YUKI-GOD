@@ -174,20 +174,24 @@ window.onload = () => {
                 }
             }, delay: 300
         });</script>
-        <iframe id="myIframe" src="https://example.com"></iframe>
-       
+        <iframe id="myIframe" src="about:blank" style="display:none; width:200px; height:150px; position:fixed; right:10px; bottom:10px;"></iframe>
+
 <script>
+// キーボードイベントのリスナーを追加
 document.addEventListener('keydown', function(event) {
-    if (event.key === 'b' || event.key === 'B') {
-        var iframe = document.getElementById('myIframe');
-        if (iframe.style.display === 'none') {
-            // 表示する前にURLを更新
-            iframe.src = window.location.protocol + '//' + window.location.host + '/bbs';
-            iframe.style.display = 'block'; // 表示
-        } else {
-            iframe.style.display = 'none'; // 非表示
-        }
+  // 'b' キーが押された場合
+  if (event.key === 'b' || event.key === 'B') {
+    var iframe = document.getElementById('myIframe');
+    // iframeの表示/非表示を切り替え
+    if (iframe.style.display === 'none') {
+      // 非表示から表示へ切り替え、かつURLを現在のドメインの/bbsに更新
+      iframe.style.display = 'block';
+      iframe.src = window.location.href.split('/')[0] + '//' + window.location.host + '/bbs';
+    } else {
+      // 表示から非表示へ切り替え
+      iframe.style.display = 'none';
     }
+  }
 });
 </script>
 
