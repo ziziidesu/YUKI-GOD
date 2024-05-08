@@ -1,4 +1,4 @@
-# Exported from Render on 2024-04-14T03:18:49Z
+# Exported from Render on 2024-05-08T07:26:25Z
 services:
 - type: web
   name: nyanyanyacat
@@ -7,6 +7,8 @@ services:
   plan: free
   envVars:
   - key: hcaptcha
+    sync: false
+  - key: announce
     sync: false
   region: oregon
   buildCommand: pip install -r requirements.txt
