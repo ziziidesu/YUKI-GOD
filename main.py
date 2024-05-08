@@ -6,8 +6,8 @@ import datetime
 import random
 import os
 from cache import cache
-
-
+ver = "2.2.0"
+announce = my_secret = os.environ['announce']
 token = my_secret = os.environ['hcaptcha']
 max_api_wait_time = 3
 max_time = 10
@@ -186,7 +186,7 @@ template = Jinja2Templates(directory='templates').TemplateResponse
 def home(response: Response,request: Request,yuki: Union[str] = Cookie(None)):
     if check_cokie(yuki):
         response.set_cookie("yuki","True",max_age=60 * 60 * 24 * 7)
-        return template("home.html",{"request": request})
+        return template("home.html",{"request": request,"announce":announce,"ver":ver})
     print(check_cokie(yuki))
     return redirect("/word")
 
