@@ -8,9 +8,6 @@ services:
   envVars:
   - key: hcaptcha
     sync: false
-  - key: announce
-    sync: false
-  region: oregon
   buildCommand: pip install -r requirements.txt
   startCommand: uvicorn --port $PORT --host 0.0.0.0 main:app
 version: "1"
