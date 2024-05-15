@@ -6,7 +6,7 @@ import datetime
 import random
 import os
 from cache import cache
-ver = "2.2.0"
+ver = "2.2.1"
 
 token = my_secret = os.environ['hcaptcha']
 max_api_wait_time = 3
