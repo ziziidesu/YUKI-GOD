@@ -337,7 +337,12 @@ def home(response: Response,request: Request,yuki: Union[str] = Cookie(None)):
 def home(response: Response,request: Request,yuki: Union[str] = Cookie(None)):
     if (check_cokie(yuki)):
      return redirect("/")
-    return template("word.html",{"request": request,"token": token})
+    return template("hcaptcha.html",{"request": request,"token": token})
+@app.get("/word", response_class=HTMLResponse)
+def home(response: Response,request: Request,yuki: Union[str] = Cookie(None)):
+    if (check_cokie(yuki)):
+     return redirect("/")
+    return template("word2.html",{"request": request})
 @app.route('/news')
 def index():
     url = f'https://newsapi.org/v2/top-headlines?country=jp&apiKey=8d3db2a0f076426482dfc5b8787bad32'
