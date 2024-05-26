@@ -189,7 +189,7 @@ def home(response: Response,request: Request,yuki: Union[str] = Cookie(None)):
         response.set_cookie("yuki","True",max_age=60 * 60 * 24 * 7)
         return template("home.html",{"request": request,"ver":ver})
     print(check_cokie(yuki))
-    return redirect("/word")
+    return redirect("/hcaptcha")
 
 @app.get('/watch', response_class=HTMLResponse)
 def video(v:str,response: Response,request: Request,yuki: Union[str] = Cookie(None),proxy: Union[str] = Cookie(None)):
@@ -315,7 +315,7 @@ def home(response: Response,request: Request,yuki: Union[str] = Cookie(None)):
         response.set_cookie("yuki","True",max_age=60 * 60 * 24 * 7)
         return template("apd.html",{"request": request})
     print(check_cokie(yuki))
-    return redirect("/word")
+    return redirect("/hcaptcha")
 
 @app.get("/instance", response_class=HTMLResponse)
 def home(response: Response,request: Request,yuki: Union[str] = Cookie(None)):
@@ -323,17 +323,17 @@ def home(response: Response,request: Request,yuki: Union[str] = Cookie(None)):
         response.set_cookie("yuki","True",max_age=60 * 60 * 24 * 7)
         return template("ins.html",{"request": request})
     print(check_cokie(yuki))
-    return redirect("/word")
+    return redirect("/hcaptcha")
 @app.get("/build", response_class=HTMLResponse)
 def home(response: Response,request: Request,yuki: Union[str] = Cookie(None)):
     if check_cokie(yuki):
         response.set_cookie("yuki","True",max_age=60 * 60 * 24 * 7)
         return template("build.html",{"request": request})
     print(check_cokie(yuki))
-    return redirect("/word")
+    return redirect("/hcaptcha")
 
 
-@app.get("/word", response_class=HTMLResponse)
+@app.get("/hcaptcha", response_class=HTMLResponse)
 def home(response: Response,request: Request,yuki: Union[str] = Cookie(None)):
     if (check_cokie(yuki)):
      return redirect("/")
