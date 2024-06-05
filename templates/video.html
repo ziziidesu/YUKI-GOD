@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
-    <script src="https://unpkg.com/video.js/dist/video.js"></script>
+    <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script>
     
     
     <style>
@@ -74,8 +74,6 @@ window.onload = () => {
   <source src="{{ videourl }}" type="video/mp4">
   {% endfor %}
 </video>
-
-                </video>
             </div>
             <div class="h-box">
                 <h1>{{ videotitle }},{{like}}</h1>
@@ -200,5 +198,35 @@ document.addEventListener('keydown', function(event) {
 同時接続数:<script language="javascript" type="text/javascript" src="//counter1.fc2.com/views.php?id=89505886"></script><noscript><img src="//counter1.fc2.com/counter_now.php?id=89505886" /></noscript>  <a href="/instance" >インスタンス一覧</a><a href="/build" >インスタンス作成方法</a><a href="https://scratch.mit.edu/" >　スクラッチでインスタンスの拡散してくれる人募集中,勝手に拡散してOK</a></div>
 <p>このyuki youtubeの”逆アクセスランキング”</p>
 <div style="height:480px;"><script src="//accaii.com/sumikaze/widget.js" async></script></div>
-    
+<script>
+  // Video.jsの初期化
+  var player = videojs('player');
+
+  // 10秒巻き戻しボタンの作成
+  var rewindButton = document.createElement('button');
+  rewindButton.className = 'vjs-custom-button';
+  rewindButton.innerHTML = '⏪ 10秒';
+
+  rewindButton.onclick = function() {
+    var currentTime = player.currentTime();
+    player.currentTime(Math.max(0, currentTime - 10));
+  };
+
+  // 10秒飛ばすボタンの作成
+  var forwardButton = document.createElement('button');
+  forwardButton.className = 'vjs-custom-button';
+  forwardButton.innerHTML = '10秒 ⏩';
+
+  forwardButton.onclick = function() {
+    var currentTime = player.currentTime();
+    player.currentTime(Math.min(player.duration(), currentTime + 10));
+  };
+
+  // コントロールバーにボタンを追加
+  player.ready(function() {
+    var controlBar = player.controlBar.el();
+    controlBar.appendChild(rewindButton);
+    controlBar.appendChild(forwardButton);
+  });
+</script>
 </html>
