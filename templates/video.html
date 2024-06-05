@@ -211,6 +211,14 @@ document.addEventListener('keydown', function(event) {
     var currentTime = player.currentTime();
     player.currentTime(Math.max(0, currentTime - 10));
   };
+ var rewind20Button = document.createElement('button');
+  rewindButton.className = 'vjs-custom-button';
+  rewindButton.innerHTML = '⏪ 20秒';
+
+  rewind20Button.onclick = function() {
+    var currentTime = player.currentTime();
+    player.currentTime(Math.max(0, currentTime - 20));
+  };
 
   // 10秒飛ばすボタンの作成
   var forwardButton = document.createElement('button');
@@ -221,12 +229,30 @@ document.addEventListener('keydown', function(event) {
     var currentTime = player.currentTime();
     player.currentTime(Math.min(player.duration(), currentTime + 10));
   };
-
+  
+  var forward20Button = document.createElement('button');
+  forwardButton.className = 'vjs-custom-button';
+  forwardButton.innerHTML = '20秒 ⏩';
+  
+  forward20Button.onclick = function() {
+    var currentTime = player.currentTime();
+    player.currentTime(Math.min(player.duration(), currentTime + 20));
+  };
+  var GButton = document.createElement('button');
+  forwardButton.className = 'vjs-custom-button';
+  forwardButton.innerHTML = '緊急脱出';
+  
+  GButton.onclick = function() {
+    window.location.href = 'https://google.com';
+  };
   // コントロールバーにボタンを追加
   player.ready(function() {
     var controlBar = player.controlBar.el();
+    controlBar.appendChild(GButton);
+    controlBar.appendChild(rewind20Button);
     controlBar.appendChild(rewindButton);
     controlBar.appendChild(forwardButton);
+    controlBar.appendChild(forward20Button);
   });
 </script>
 </html>
