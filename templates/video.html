@@ -211,7 +211,6 @@ document.addEventListener('keydown', function(event) {
     var currentTime = player.currentTime();
     player.currentTime(Math.max(0, currentTime - 10));
   };
- 
 
   // 10秒飛ばすボタンの作成
   var forwardButton = document.createElement('button');
@@ -222,14 +221,12 @@ document.addEventListener('keydown', function(event) {
     var currentTime = player.currentTime();
     player.currentTime(Math.min(player.duration(), currentTime + 10));
   };
-  
-  
+
   // コントロールバーにボタンを追加
   player.ready(function() {
     var controlBar = player.controlBar.el();
     controlBar.appendChild(rewindButton);
     controlBar.appendChild(forwardButton);
-    
   });
 </script>
 </html>
