@@ -313,7 +313,7 @@ def APIwait(request: Request,exception: APItimeoutError):
 def home(response: Response,request: Request,yuki: Union[str] = Cookie(None)):
     if check_cokie(yuki):
         response.set_cookie("yuki","True",max_age=60 * 60 * 24 * 7)
-        return template("apd.html",{"request": request,"ver":ver,"update":update})
+        return template("apd1.html",{"request": request,"ver":ver,"update":update})
     print(check_cokie(yuki))
     return redirect("/hcaptcha")
 
