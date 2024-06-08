@@ -357,4 +357,6 @@ def index():
     se_value = request.args.get('se', 'n/a')
     na_value = request.args.get('na', 'n/a')
     ch_value = request.args.get('ch', 'main')
+    url = requests.get(r'https://raw.githubusercontent.com/mochidukiyukimi/yuki-youtube-instance/main/instance.txt').text.rstrip()
     requests.get(fr'{url}bbs/result?name={na_value}&message={me_value}&seed={se_value}&channel=main',cookies={"yuki":"True"}) 
+    return 'ok'
