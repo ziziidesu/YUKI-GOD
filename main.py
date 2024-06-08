@@ -350,10 +350,6 @@ def index(request: Request):
     articles = response.json().get('articles', [])
     return template('news.html', articles=articles)
 
-from flask import Flask, request
-
-app = Flask(__name__)
-
 @app.route('/bbsapi')
 def index():
     # URLパラメータからme, se, na の値を取得
