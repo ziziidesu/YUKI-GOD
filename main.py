@@ -7,7 +7,7 @@ import random
 import os
 from cache import cache
 ver = "2.3.2"
-update = "BBSにおけるメッセージ送信時の匿名化"
+update = "バグ修正"
 token = my_secret = os.environ['hcaptcha']
 max_api_wait_time = 3
 max_time = 10
