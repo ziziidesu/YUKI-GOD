@@ -6,8 +6,8 @@ import datetime
 import random
 import os
 from cache import cache
-ver = "2.3.1"
-update = "N/A"
+ver = "2.3.2"
+update = "BBSにおけるメッセージ送信時の匿名化"
 token = my_secret = os.environ['hcaptcha']
 max_api_wait_time = 3
 max_time = 10
@@ -349,3 +349,12 @@ def index():
     response = requests.get(url)
     articles = response.json().get('articles', [])
     return render_template('news.html', articles=articles)
+@app.route('/bbsapi')
+def index():
+    # URLパラメータからme, se, na の値を取得
+    # BBSにおけるメッセージ送信時の匿名化
+    me_value = request.args.get('me', 'n/a')
+    se_value = request.args.get('se', 'n/a')
+    na_value = request.args.get('na', 'n/a')
+    ch_value = request.args.get('ch', 'main')
+    requests.get(fr'{url}bbs/result?name={na_value}&message={me_value}&seed={se_value}&channel=main',cookies={"yuki":"True"}) 
