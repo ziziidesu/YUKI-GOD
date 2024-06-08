@@ -344,13 +344,13 @@ def home(response: Response,request: Request,yuki: Union[str] = Cookie(None)):
      return redirect("/")
     return template("word2.html",{"request": request})
 @app.route('/news')
-def index():
+def def index(request: Request):
     url = f'https://newsapi.org/v2/top-headlines?country=jp&apiKey=8d3db2a0f076426482dfc5b8787bad32'
     response = requests.get(url)
     articles = response.json().get('articles', [])
     return render_template('news.html', articles=articles)
 @app.route('/bbsapi')
-def index():
+def index(request: Request):
     # URLパラメータからme, se, na の値を取得
     # BBSにおけるメッセージ送信時の匿名化
     me_value = request.args.get('me', 'n/a')
