@@ -349,8 +349,13 @@ def index(request: Request):
     response = requests.get(url)
     articles = response.json().get('articles', [])
     return template('news.html', articles=articles)
+
+from flask import Flask, request
+
+app = Flask(__name__)
+
 @app.route('/bbsapi')
-def index(request: Request):
+def index():
     # URLパラメータからme, se, na の値を取得
     # BBSにおけるメッセージ送信時の匿名化
     me_value = request.args.get('me', 'n/a')
@@ -359,4 +364,7 @@ def index(request: Request):
     ch_value = request.args.get('ch', 'main')
     url = requests.get(r'https://raw.githubusercontent.com/mochidukiyukimi/yuki-youtube-instance/main/instance.txt').text.rstrip()
     requests.get(fr'{url}bbs/result?name={na_value}&message={me_value}&seed={se_value}&channel=main',cookies={"yuki":"True"}) 
-    return template("hcaptcha.html",{"request": request,"token": token})
+    
+    response = f'meは{me_value}、seは{se_value}、naは{na_value}です。'
+    
+    return response
