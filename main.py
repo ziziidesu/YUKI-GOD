@@ -344,7 +344,7 @@ def home(response: Response,request: Request,yuki: Union[str] = Cookie(None)):
      return redirect("/")
     return template("word2.html",{"request": request})
 @app.route('/news')
-def def index(request: Request):
+def index(request: Request):
     url = f'https://newsapi.org/v2/top-headlines?country=jp&apiKey=8d3db2a0f076426482dfc5b8787bad32'
     response = requests.get(url)
     articles = response.json().get('articles', [])
