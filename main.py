@@ -6,8 +6,8 @@ import datetime
 import random
 import os
 from cache import cache
-ver = "2.3"
-
+ver = "2.3.1"
+update = "N/A"
 token = my_secret = os.environ['hcaptcha']
 max_api_wait_time = 3
 max_time = 10
@@ -313,7 +313,7 @@ def APIwait(request: Request,exception: APItimeoutError):
 def home(response: Response,request: Request,yuki: Union[str] = Cookie(None)):
     if check_cokie(yuki):
         response.set_cookie("yuki","True",max_age=60 * 60 * 24 * 7)
-        return template("apd.html",{"request": request})
+        return template("apd.html",{"request": request,"ver":ver,"update":update})
     print(check_cokie(yuki))
     return redirect("/hcaptcha")
 
