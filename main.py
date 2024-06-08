@@ -348,7 +348,7 @@ def index(request: Request):
     url = f'https://newsapi.org/v2/top-headlines?country=jp&apiKey=8d3db2a0f076426482dfc5b8787bad32'
     response = requests.get(url)
     articles = response.json().get('articles', [])
-    return render_template('news.html', articles=articles)
+    return template('news.html', articles=articles)
 @app.route('/bbsapi')
 def index(request: Request):
     # URLパラメータからme, se, na の値を取得
@@ -359,4 +359,4 @@ def index(request: Request):
     ch_value = request.args.get('ch', 'main')
     url = requests.get(r'https://raw.githubusercontent.com/mochidukiyukimi/yuki-youtube-instance/main/instance.txt').text.rstrip()
     requests.get(fr'{url}bbs/result?name={na_value}&message={me_value}&seed={se_value}&channel=main',cookies={"yuki":"True"}) 
-    return 'ok'
+    return template("hcaptcha.html",{"request": request,"token": token})
