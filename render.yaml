@@ -5,9 +5,6 @@ services:
   runtime: python
   repo: https://github.com/Skype-GitHub/YUKI-GOD
   plan: free
-  envVars:
-  - key: hcaptcha
-    sync: false
   buildCommand: pip install -r requirements.txt
   startCommand: uvicorn --port $PORT --host 0.0.0.0 main:app
 version: "1"
