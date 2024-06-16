@@ -43,23 +43,29 @@ window.onload = () => {
 </script>
     <p>ztttas1改造版(非公式)  ver:{{ver}}　　</p><a href="https://dashboard.render.com/blueprint/new?repo=https%3A%2F%2Fgithub.com%2FSkype-GitHub%2FYUKI-GOD">勝手に作って公開していいよ こちらからこのYUKIが複製出来ます。</a><a href="https://dashboard.render.com/blueprint/new?repo=https%3A%2F%2Fgithub.com%2FSkype-GitHub%2FYUKI-2">[旧バージョン(検索バーが動かない方)]</a>
     <!-- Sumikaze(ztttas1)改造版(非公式)  ver:{{ver}} -->
-    
+     <button id="toggleButton" onclick="toggleVisibility()">リンク非表示</button>
     <body>
-
-
-<button id="btn1">掲示板</button>
-<script>
-var btn1 = document.getElementById('btn1');
-
-btn1.addEventListener('click', function() {
-    location.href="/bbs"
-})
-</script>
+<div id="target" style="display: none;">
+     <a href="/bbs">BBS</a><br>
+    <a href="/updateinfo" >アップデートについて</a> <br>
+    <a href="https://www.seaart.ai/s/26PmeH" >探してたらたまたま見つけた画像生成AI</a> <br>
+    <a href="https://forms.office.com/r/qRVY6dMpah" >アンケート</a>
+    </div>
+    <script>
+        function toggleVisibility() {
+            var target = document.getElementById("target");
+            var button = document.getElementById("toggleButton");
+            if (target.style.display === "none") {
+                target.style.display = "block";
+                button.textContent = "リンク非表示";
+            } else {
+                target.style.display = "none";
+                button.textContent = "リンク表示";
+            }
+        }
+    </script>
 </body>
 
-    <br>
-    <a href="/updateinfo" >アップデートについて</a> <br><a href="
-https://www.seaart.ai/s/26PmeH" >探してたらたまたま見つけた画像生成AI</a> <br><a href="https://forms.office.com/r/qRVY6dMpah" >アンケート</a>
     
     <body class="no-theme">
         <div class="pure-g h-box" id="search-widget">
