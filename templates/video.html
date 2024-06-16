@@ -60,6 +60,31 @@ window.onload = () => {
 <br><br><h3 class="yukiyoutube">YUKI YOUTUBE</h3>
            
             <div id="player-container" class="h-box">
+                <script>
+        function toggleContent() {
+            var hideElement = document.getElementById("hide");
+            var showElement = document.getElementById("show");
+
+            if (hideElement.style.display !== "none") {
+                hideElement.style.display = "none";
+                showElement.style.display = "block";
+            } else {
+                hideElement.style.display = "block";
+                showElement.style.display = "none";
+            }
+        }
+    </script>
+            <div id="hide">
+                <video style="outline:none;width:100%;background-color:#000;" playsinline="" poster="{% if proxy == "True" %}/thumbnail?v={{ videoid }}{% else %}https://img.youtube.com/vi/{{ videoid }}/0.jpg{% endif
+                    %}" id="player" class="on-video_player video-js player-style-invidious" controls=""
+                    loadedmetadata="settime()" loop="">
+                    {% for videourl in videourls%}
+                    <source src="{{videourl}}">
+                    {% endfor %}
+                </video>
+                </video>
+            </div>
+                <div id="show" style="display: none;">
                 <video
   id="player"
   class="video-js vjs-default-skin on-video_player player-style-invidious"
@@ -73,8 +98,8 @@ window.onload = () => {
   {% for videourl in videourls %}
   <source src="{{ videourl }}" type="video/mp4">
   {% endfor %}
-</video>
-            </div>
+</video></div>
+            </div><button onclick="toggleContent()">Video.js/Normal</button>
             <div class="h-box">
                 <h1>{{ videotitle }}</h1>
             </div>
