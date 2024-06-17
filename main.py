@@ -14,6 +14,7 @@ max_time = 10
 apis = [r"https://inv.tux.pizza/",r"https://invidious.private.coffee/",r"https://iv.datura.network/",r"https://invidious.fdn.fr/",r"https://invidious.perennialte.ch/",r"https://invidious.materialio.us/"]
 url = requests.get(r'https://raw.githubusercontent.com/mochidukiyukimi/yuki-youtube-instance/main/instance.txt').text.rstrip()
 version = "1.0"
+adminannounce = requests.get(r'https://ztttas1.github.io/yuki00000000000000000000000000000/AN.txt').text.rstrip()
 
 apichannels = []
 apicomments = []
@@ -186,7 +187,7 @@ template = Jinja2Templates(directory='templates').TemplateResponse
 def home(response: Response,request: Request,yuki: Union[str] = Cookie(None)):
     if check_cokie(yuki):
         response.set_cookie("yuki","True",max_age=60 * 60 * 24 * 7)
-        return template("home.html",{"request": request,"ver":ver})
+        return template("home.html",{"request": request,"ver":ver, "adminannounce": adminannounce})
     print(check_cokie(yuki))
     return redirect("/hcaptcha")
 
