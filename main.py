@@ -6,12 +6,12 @@ import datetime
 import random
 import os
 from cache import cache
-ver = "2.4.0"
-update = "hcaptchaのサイトキーが不必要に"
+ver = "2.4.2"
+update = "UIの改善、動画視聴に関する改善"
 token = "e4f5c13f-4f31-4ae1-ac5c-b3f1df232073"
 max_api_wait_time = 3
 max_time = 10
-apis = [r"https://youtube.076.ne.jp/",r"https://vid.puffyan.us/",r"https://inv.riverside.rocks/",r"https://invidio.xamh.de/",r"https://y.com.sb/",r"https://invidious.sethforprivacy.com/",r"https://invidious.tiekoetter.com/",r"https://inv.bp.projectsegfau.lt/",r"https://inv.vern.cc/",r"https://invidious.nerdvpn.de/",r"https://inv.privacy.com.de/",r"https://invidious.rhyshl.live/",r"https://invidious.slipfox.xyz/",r"https://invidious.weblibre.org/",r"https://invidious.namazso.eu/"]
+apis = [r"https://inv.tux.pizza/",r"https://invidious.private.coffee/",r"https://iv.datura.network/",r"https://invidious.fdn.fr/",r"https://invidious.perennialte.ch/",r"https://invidious.materialio.us/"]
 url = requests.get(r'https://raw.githubusercontent.com/mochidukiyukimi/yuki-youtube-instance/main/instance.txt').text.rstrip()
 version = "1.0"
 
