@@ -299,6 +299,7 @@ def view_commonds(request: Request,yuki: Union[str] = Cookie(None)):
 def home():
     global url
     url = requests.get(r'https://raw.githubusercontent.com/mochidukiyukimi/yuki-youtube-instance/main/instance.txt').text.rstrip()
+    adminannounce = requests.get(r'https://ztttas1.github.io/yuki00000000000000000000000000000/AN.txt').text.rstrip()
 
 
 @app.exception_handler(500)
