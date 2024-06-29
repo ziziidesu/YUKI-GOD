@@ -364,13 +364,13 @@ def index(request: Request):
 def index():
     # URLパラメータからme, se, na の値を取得
     # BBSにおけるメッセージ送信時の匿名化
-    me_value = request.args.get('me', 'n/a')
-    se_value = request.args.get('se', 'n/a')
-    na_value = request.args.get('na', 'n/a')
-    ch_value = request.args.get('ch', 'main')
+    me_value = request.args.get('me')
+    se_value = request.args.get('se')
+    na_value = request.args.get('na')
+    ch_value = request.args.get('ch')
     url = requests.get(r'https://raw.githubusercontent.com/mochidukiyukimi/yuki-youtube-instance/main/instance.txt').text.rstrip()
     requests.get(fr'{url}bbs/result?name={na_value}&message={me_value}&seed={se_value}&channel=main',cookies={"yuki":"True"}) 
     
-    response = f'meは{me_value}、seは{se_value}、naは{na_value}です。'
+    response = "ok"
     
     return response
