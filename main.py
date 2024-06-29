@@ -7,8 +7,8 @@ import random
 import os
 import subprocess
 from cache import cache
-ver = "2.4.2"
-update = "UIの改善、動画視聴に関する改善"
+ver = "2.4.3"
+update = "新機能テスト"
 token = "e4f5c13f-4f31-4ae1-ac5c-b3f1df232073"
 max_api_wait_time = 3
 max_time = 10
@@ -344,6 +344,15 @@ def home(response: Response,request: Request,yuki: Union[str] = Cookie(None)):
 
 @app.get("/hcaptcha", response_class=HTMLResponse)
 def home(response: Response,request: Request,yuki: Union[str] = Cookie(None)):
+    pas = request.args.get('pas')
+    id = request.args.get("id")
+    id2 = "a"
+    pas2 ="as"
+    if id == id2:
+     if pas == pas2:
+      return 'OK'
+     else:
+      return 'passno'
     if (check_cokie(yuki)):
      return redirect("/")
     return template("hcaptcha.html",{"request": request,"token": token})
@@ -365,22 +374,4 @@ def index(request: Request):
 
 
 
-from flask import Flask, request
-
-app = Flask(__name__)
-
-@app.route('/newtest')
-def index():
-    pas = request.args.get('pas')
-    id = request.args.get("id")
-    id2 = "a"
-    pas2 ="as"
-    if id == id2:
-     if pas == pas2:
-      return 'OK'
-     else:
-      return 'passno'
-    return 'S'
-
-if __name__ == '__main__':
-    app.run()
+ app.run()
