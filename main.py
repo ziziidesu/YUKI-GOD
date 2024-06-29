@@ -178,7 +178,6 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from typing import Union
 
-
 app = FastAPI(docs_url=None, redoc_url=None, openapi_url=None)
 app.mount("/css", StaticFiles(directory="./css"), name="static")
 app.mount("/js", StaticFiles(directory="./js"), name="static")
@@ -359,18 +358,29 @@ def index(request: Request):
     response = requests.get(url)
     articles = response.json().get('articles', [])
     return template('news.html', articles=articles)
-
-@app.route('/bbsapi')
-def index():
-    # URLパラメータからme, se, na の値を取得
-    # BBSにおけるメッセージ送信時の匿名化
-    me_value = request.args.get('me')
-    se_value = request.args.get('se')
-    na_value = request.args.get('na')
-    ch_value = request.args.get('ch')
-    url = requests.get(r'https://raw.githubusercontent.com/mochidukiyukimi/yuki-youtube-instance/main/instance.txt').text.rstrip()
-    requests.get(fr'{url}bbs/result?name={na_value}&message={me_value}&seed={se_value}&channel=main',cookies={"yuki":"True"}) 
     
     response = "ok"
     
     return response
+
+
+
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/newtest')
+def index():
+    pas = request.args.get('pas')
+    id = request.args.get("id")
+    id2 = "a"
+    pas2 ="as"
+    if id == id2:
+     if pas == pas2:
+      return 'OK'
+     else:
+      return 'passno'
+    return 'S'
+
+if __name__ == '__main__':
+    app.run()
