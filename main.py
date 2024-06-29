@@ -344,15 +344,6 @@ def home(response: Response,request: Request,yuki: Union[str] = Cookie(None)):
 
 @app.get("/hcaptcha", response_class=HTMLResponse)
 def home(response: Response,request: Request,yuki: Union[str] = Cookie(None)):
-    pas = request.args.get('pas')
-    id = request.args.get("id")
-    id2 = "a"
-    pas2 ="as"
-    if id == id2:
-     if pas == pas2:
-      return 'OK'
-     else:
-      return 'passno'
     if (check_cokie(yuki)):
      return redirect("/")
     return template("hcaptcha.html",{"request": request,"token": token})
@@ -371,3 +362,17 @@ def index(request: Request):
     response = "ok"
     
     return response
+@app.get("/sy", response_class=HTMLResponse)
+def home(response: Response,request: Request,yuki: Union[str] = Cookie(None)):
+    if (check_cokie(yuki)):
+     return redirect("/")
+    pas = request.args.get('pas')
+    id = request.args.get("id")
+    id2 = "a"
+    pas2 ="as"
+    if id == id2:
+     if pas == pas2:
+      return 'OK'
+     else:
+      return 'passno'
+    return 'S'
