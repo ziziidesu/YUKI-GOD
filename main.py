@@ -371,7 +371,3 @@ def index(request: Request):
     response = "ok"
     
     return response
-
-
-
- app.run()
