@@ -177,6 +177,7 @@ from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from typing import Union
+import psutil
 
 app = FastAPI(docs_url=None, redoc_url=None, openapi_url=None)
 app.mount("/css", StaticFiles(directory="./css"), name="static")
@@ -193,9 +194,10 @@ template = Jinja2Templates(directory='templates').TemplateResponse
 
 @app.get("/", response_class=HTMLResponse)
 def home(response: Response,request: Request,yuki: Union[str] = Cookie(None)):
+    cpu = psutil.cpu_percent(interval=1)
     if check_cokie(yuki):
         response.set_cookie("yuki","True",max_age=60 * 60 * 24 * 7)
-        return template("home.html",{"request": request,"ver":ver, "adminannounce": adminannounce})
+        return template("home.html",{"request": request,"ver":ver, "adminannounce": adminannounce, "cpu": upu})
     print(check_cokie(yuki))
     return redirect("/hcaptcha")
 
