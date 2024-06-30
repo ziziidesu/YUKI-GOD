@@ -15,7 +15,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet" />
     <script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script>
-    
+    <script src="/js/videojs-contrib-hls.js"></script>
     
     <style>
         #myIframe {
@@ -253,5 +253,9 @@ document.addEventListener('keydown', function(event) {
     controlBar.appendChild(rewindButton);
     controlBar.appendChild(forwardButton);
   });
+</script>
+<script>
+var player = videojs('example-video');
+player.play();
 </script>
 </html>
