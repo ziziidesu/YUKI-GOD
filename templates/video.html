@@ -27,20 +27,10 @@
   border: none; /* ボーダーなし */
   z-index: 1000; /* 他の要素より前面に表示 */
 }
-playButton {
+fixed {
   position: fixed;
   bottom: 10px;/*自分が固定したい位置(例は上から0pxの位置)*/
   left: 10px;/*自分が固定したい位置(例は左から10pxの位置)*/
-}
-pauseButton {
-  position: fixed;
-  bottom: 10px;/*自分が固定したい位置(例は上から0pxの位置)*/
-  left: 10px;/*自分が固定したい位置(例は左から10pxの位置)*/
-}
-speedButton {
-  position: fixed;
-  bottom: 10px;/*自分が固定したい位置(例は上から0pxの位置)*/a
-  left: 100px;/*自分が固定したい位置(例は左から10pxの位置)*/
 }
 </style>
     
@@ -296,8 +286,9 @@ player.play();
       player.pause();
     };
   </script>
-<button id="speedButton">2x Speed</button>
+<div id="fixed">
+<button id="speedButton" style="width: 100px; height: 20px;>2x Speed</button>
 <button id="playButton" style="width: 70px; height: 20px;">Play</button>
-  <button id="pauseButton"style="width: 70px; height: 20px;">Pause</button>
-</body>
+button id="pauseButton"style="width: 70px; height: 20px;">Pause</button>
+</div></body>
 </html>
