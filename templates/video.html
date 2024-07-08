@@ -28,24 +28,7 @@
   z-index: 1000; /* 他の要素より前面に表示 */
 }
 </style>
-    <style>
     
-
-    #speedButton {
-      position: fixed;
-      bottom: 50px;
-      right: 10px;
-      z-index: 1000;
-      padding: 10px 20px;
-      background-color: #28a745;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-      display: none; /* 初期状態で非表示 */
-    }
-  </style>
 </head>
 
 
@@ -276,7 +259,7 @@ document.addEventListener('keydown', function(event) {
 var player = videojs('example-video');
 player.play();
 </script>
- <button id="speedButton">2x Speed</button></html>
+ 
 
  <script>
   var player = videojs('player');
@@ -298,7 +281,8 @@ player.play();
       player.pause();
     };
   </script>
-<button id="playButton" style="right: 10px; bottom: 10px;">Play</button>
+<button id="speedButton">2x Speed</button></html>
+<button id="playButton" style="right: 10px; bottom: 30px;">Play</button>
   <button id="pauseButton"style="right: 10px; bottom: 10px;">Pause</button>
 </body>
 </html>
