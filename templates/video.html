@@ -129,7 +129,7 @@ window.onload = () => {
                     {% endfor %}
                 </video>
                 </video></div>
-            </div><button onclick="toggleContent()">Video.js/Normal</button><button id="toggleSpeedButton">コントロールパネル表示</button>
+            </div><button onclick="toggleContent()">Video.js/Normal</button>
             <div class="h-box">
                 <h1>{{ videotitle }}</h1>
             </div>
@@ -289,8 +289,8 @@ var player = videojs('example-video');
 player.play();
 </script>
  <button id="speedButton">2x Speed</button></html>
-<button id="playButton" style="bottom: 90px; right: 10px; background-color: #ffc107;">Play</button>
-  <button id="pauseButton" style="bottom: 130px; right: 10px; background-color: #dc3545;">Pause</button>
+<button id="playButton" style="bottom: 90px; right: 10px;">Play</button>
+  <button id="pauseButton" style="bottom: 130px; right: 10px;">Pause</button>
  <script>
   var player = videojs('player');
     // 2倍速ボタン
@@ -298,15 +298,6 @@ player.play();
     speedButton.onclick = function() {
       player.playbackRate(2);
     };
-
-    // トグルボタンのイベントリスナー
-    document.getElementById('toggleSpeedButton').addEventListener('click', function() {
-      if (speedButton.style.display === 'none') {
-        speedButton.style.display = 'block';
-      } else {
-        speedButton.style.display = 'none';
-      }
-    });
 
     // 再生ボタン
     var playButton = document.getElementById('playButton');
