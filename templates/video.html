@@ -28,6 +28,36 @@
   z-index: 1000; /* 他の要素より前面に表示 */
 }
 </style>
+    <style>
+    #toggleSpeedButton {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      z-index: 1000;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    #speedButton {
+      position: fixed;
+      bottom: 50px;
+      right: 10px;
+      z-index: 1000;
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      display: none; /* 初期状態で非表示 */
+    }
+  </style>
 </head>
 
 
@@ -99,7 +129,7 @@ window.onload = () => {
                     {% endfor %}
                 </video>
                 </video></div>
-            </div><button onclick="toggleContent()">Video.js/Normal</button>
+            </div><button onclick="toggleContent()">Video.js/Normal</button><button id="toggleSpeedButton">コントロールパネル表示</button>
             <div class="h-box">
                 <h1>{{ videotitle }}</h1>
             </div>
@@ -258,4 +288,37 @@ document.addEventListener('keydown', function(event) {
 var player = videojs('example-video');
 player.play();
 </script>
+ <button id="speedButton">2x Speed</button></html>
+<button id="playButton" style="bottom: 90px; right: 10px; background-color: #ffc107;">Play</button>
+  <button id="pauseButton" style="bottom: 130px; right: 10px; background-color: #dc3545;">Pause</button>
+ <script>
+  var player = videojs('player');
+    // 2倍速ボタン
+    var speedButton = document.getElementById('speedButton');
+    speedButton.onclick = function() {
+      player.playbackRate(2);
+    };
+
+    // トグルボタンのイベントリスナー
+    document.getElementById('toggleSpeedButton').addEventListener('click', function() {
+      if (speedButton.style.display === 'none') {
+        speedButton.style.display = 'block';
+      } else {
+        speedButton.style.display = 'none';
+      }
+    });
+
+    // 再生ボタン
+    var playButton = document.getElementById('playButton');
+    playButton.onclick = function() {
+      player.play();
+    };
+
+    // 一時停止ボタン
+    var pauseButton = document.getElementById('pauseButton');
+    pauseButton.onclick = function() {
+      player.pause();
+    };
+  </script>
+</body>
 </html>
