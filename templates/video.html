@@ -29,19 +29,7 @@
 }
 </style>
     <style>
-    #toggleSpeedButton {
-      position: fixed;
-      bottom: 10px;
-      right: 10px;
-      z-index: 1000;
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-    }
+    
 
     #speedButton {
       position: fixed;
@@ -289,8 +277,7 @@ var player = videojs('example-video');
 player.play();
 </script>
  <button id="speedButton">2x Speed</button></html>
-<button id="playButton" style="bottom: 90px; right: 10px;">Play</button>
-  <button id="pauseButton" style="bottom: 130px; right: 10px;">Pause</button>
+
  <script>
   var player = videojs('player');
     // 2倍速ボタン
@@ -311,5 +298,7 @@ player.play();
       player.pause();
     };
   </script>
+<button id="playButton" style="right: 10px; bottom: 10px;">Play</button>
+  <button id="pauseButton"style="right: 10px; bottom: 10px;">Pause</button>
 </body>
 </html>
