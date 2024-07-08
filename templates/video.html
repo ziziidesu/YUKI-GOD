@@ -105,7 +105,7 @@ window.onload = () => {
                     {% endfor %}
                 </video>
                 </video></div>
-            </div><button onclick="toggleContent()">Video.js/Normal</button>
+            </div><button onclick="toggleContent()">Video.js/Normal</button><button id="speedButton" style="width: 100px; height: 20px;">2x Speed</button><button id="playButton" style="width: 70px; height: 20px;">Play</button><button id="pauseButton"style="width: 70px; height: 20px;">Pause</button>
             <div class="h-box">
                 <h1>{{ videotitle }}</h1>
             </div>
@@ -287,8 +287,6 @@ player.play();
     };
   </script>
 <div id="fixed">
-<button id="speedButton" style="width: 100px; height: 20px;">2x Speed</button>
-<button id="playButton" style="width: 70px; height: 20px;">Play</button>
-<button id="pauseButton"style="width: 70px; height: 20px;">Pause</button>
+
 </div></body>
 </html>
