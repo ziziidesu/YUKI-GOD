@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>お気に入り</title>
+
+
+    <script>
+    // ボタンがクリックされたときにリダイレクトを行う関数
+        document.getElementById('redirectButton').addEventListener('click', function() {
+            let cookieValue = getCookie('1');
+            if (cookieValue) {
+                window.location.href = `/watch?v=${cookieValue}`;
+            } else {
+                console.log('クッキー"1"が見つかりませんでした。');
+            }
+        });
+    </script>
+    <style>
+        /* コンテナを画面の中央に配置 */
+        .oki {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* ビューポートの高さに合わせる */
+        }
+    </style>
+</head>
+<body>
+<p>作りかけの機能だぞ</p>
+ <div class="oki">
+    <button id="redirectButton">お気に入り</button>
+ </div>
+    <br>
+    
+    
+    <!-- FC2カウンター ここから -->
+<script language="javascript" type="text/javascript" src="//counter1.fc2.com/counter.php?id=89505886"></script><noscript><img src="//counter1.fc2.com/counter_img.php?id=89505886" /></noscript>
+<!-- FC2カウンター ここまで -->
+ </div>
+</body>
+</html>
