@@ -7,12 +7,11 @@
     <script>
     // ボタンがクリックされたときにリダイレクトを行う関数
         function redirectButton(){
+            console.log('動作-0');
             let cookieValue = getCookie('1');
-            if (cookieValue) {
-                window.location.href = `/watch?v=${cookieValue}`;
-            } else {
-                console.log('クッキー"1"が見つかりませんでした。');
-            }
+            console.log('動作-1');
+            window.location.href = `/watch?v=${cookieValue}`;
+            console.log('動作-2');
         });
     </script>
     <style>
