@@ -354,7 +354,7 @@ def home(response: Response,request: Request,yuki: Union[str] = Cookie(None)):
     if (check_cokie(yuki)):
      return redirect("/")
     return template("word2.html",{"request": request})
-@app.get("/hcaptcha", response_class=HTMLResponse)
+@app.get("/like", response_class=HTMLResponse)
 def home(response: Response,request: Request,yuki: Union[str] = Cookie(None)):
     if not(check_cokie(yuki)):
      return redirect("/")
