@@ -6,7 +6,7 @@
 
     <script>
     // ボタンがクリックされたときにリダイレクトを行う関数
-        document.getElementById('redirectButton').addEventListener('click', function() {
+        function edirectButton(){
             let cookieValue = getCookie('1');
             if (cookieValue) {
                 window.location.href = `/watch?v=${cookieValue}`;
