@@ -7,8 +7,8 @@ import random
 import os
 import subprocess
 from cache import cache
-ver = "2.4.3"
-update = "新機能テスト"
+ver = "2.5β"
+update = "お気に入り機能の実装"
 token = "e4f5c13f-4f31-4ae1-ac5c-b3f1df232073"
 max_api_wait_time = 3
 max_time = 10
@@ -354,27 +354,8 @@ def home(response: Response,request: Request,yuki: Union[str] = Cookie(None)):
     if (check_cokie(yuki)):
      return redirect("/")
     return template("word2.html",{"request": request})
-@app.route('/news')
-def index(request: Request):
-    url = f'https://newsapi.org/v2/top-headlines?country=jp&apiKey=8d3db2a0f076426482dfc5b8787bad32'
-    response = requests.get(url)
-    articles = response.json().get('articles', [])
-    return template('news.html', articles=articles)
-    
-    response = "ok"
-    
-    return response
-@app.get("/sy", response_class=HTMLResponse)
+@app.get("/hcaptcha", response_class=HTMLResponse)
 def home(response: Response,request: Request,yuki: Union[str] = Cookie(None)):
-    if (check_cokie(yuki)):
+    if not(check_cokie(yuki)):
      return redirect("/")
-    pas = request.args.get('pas')
-    id = request.args.get("id")
-    id2 = "a"
-    pas2 ="as"
-    if id == id2:
-     if pas == pas2:
-      return 'OK'
-     else:
-      return 'passno'
-    return 'S'
+    return template("okini.html",{"request": request})
