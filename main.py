@@ -17,7 +17,9 @@ url = requests.get(r'https://raw.githubusercontent.com/mochidukiyukimi/yuki-yout
 version = "1.0"
 adminannounce = requests.get(r'https://ztttas1.github.io/yuki00000000000000000000000000000/AN.txt').text.rstrip()
 os.system("chmod 777 ./yukiverify")
-
+# フォーク元:https://github.com/mochidukiyukimi/yuki-youtube-slim-2
+# このyuki:https://github.com/Skype-GitHub/YUKI-GOD
+# フォークした場合hcaptchaのサイトキーを自分で作り直して使用してください
 
 apichannels = []
 apicomments = []
