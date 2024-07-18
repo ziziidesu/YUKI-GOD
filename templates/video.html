@@ -33,6 +33,10 @@ fixed {
   left: 10px;/*自分が固定したい位置(例は左から10pxの位置)*/
 }
 </style>
+<style>
+.videobtn{
+    /*コレ*/background: #87ceeb;
+}
 <script>
         // クッキーを設定する関数
         function setCookie(name, value, days) {
@@ -154,7 +158,7 @@ window.onload = () => {
                     {% endfor %}
                 </video>
                 </video></div>
-            </div><button onclick="toggleContent()">Video.js/Normal</button><button id="rewind-10s-btn">◀10s</button><button id="speedButton">2x Speed</button><button id="playButton">Play</button><button id="pauseButton">Pause</button><button id="normal-speed-btn">1x Speed</button><button id="forward-10s-btn">10s▶</button>
+            </div><div id="videobtn"><button onclick="toggleContent()">Video.js/Normal</button><button id="rewind-10s-btn">◀10s</button><button id="speedButton">2x Speed</button><button id="playButton">Play</button><button id="pauseButton">Pause</button><button id="normal-speed-btn">1x Speed</button><button id="forward-10s-btn">10s▶</button></div>
             <div class="h-box">
                 <h1>{{ videotitle }}</h1>
             </div>
