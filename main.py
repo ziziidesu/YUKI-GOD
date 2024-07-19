@@ -7,9 +7,9 @@ import random
 import os
 import subprocess
 from cache import cache
-ver = "2.5β"
-update = "お気に入り機能の実装"
-token = "e4f5c13f-4f31-4ae1-ac5c-b3f1df232073"
+ver = "2.5" # バージョン    
+update = "バク修正、テスト中の機能の実装" # アップデート内容
+token = "e4f5c13f-4f31-4ae1-ac5c-b3f1df232073" # hcaptchaのサイトキー
 max_api_wait_time = 3
 max_time = 10
 apis = [r"https://inv.tux.pizza/",r"https://invidious.private.coffee/",r"https://iv.datura.network/",r"https://invidious.fdn.fr/",r"https://invidious.perennialte.ch/",r"https://invidious.materialio.us/"]
@@ -196,7 +196,7 @@ template = Jinja2Templates(directory='templates').TemplateResponse
 
 @app.get("/", response_class=HTMLResponse)
 def home(response: Response,request: Request,yuki: Union[str] = Cookie(None)):
-    
+    adminannounce = requests.get(r'https://ztttas1.github.io/yuki00000000000000000000000000000/AN.txt').text.rstrip()
     if check_cokie(yuki):
         response.set_cookie("yuki","True",max_age=60 * 60 * 24 * 7)
         return template("home.html",{"request": request,"ver":ver, "adminannounce": adminannounce,})
@@ -311,7 +311,6 @@ def view_commonds(request: Request,yuki: Union[str] = Cookie(None)):
 def home():
     global url
     url = requests.get(r'https://raw.githubusercontent.com/mochidukiyukimi/yuki-youtube-instance/main/instance.txt').text.rstrip()
-    adminannounce = requests.get(r'https://ztttas1.github.io/yuki00000000000000000000000000000/AN.txt').text.rstrip()
 
 
 @app.exception_handler(500)
