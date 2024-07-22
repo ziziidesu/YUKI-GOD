@@ -1,7 +1,21 @@
 <script>
-    function redirectToSavedParameter() {
+        // クッキーの値を取得する関数
+        function getCookie(name) {
+            let nameEQ = name + "=";
+            let ca = document.cookie.split(';');
+            for(let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        // クッキーから値を読み込み、リダイレクト
+        (function() {
             let tValue = getCookie('t');
             if (tValue) {
                 window.location.href = "/watch?v=" + encodeURIComponent(tValue);  // クッキーの値を使ってリダイレクト
             }
+        })();
     </script>
