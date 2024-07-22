@@ -1,8 +1,7 @@
 <script>
-    function saveParameterAndRedirect() {
-            let tValue = getParameterByName('t');
+    function redirectToSavedParameter() {
+            let tValue = getCookie('t');
             if (tValue) {
-                setCookie('t', tValue, 7);  // 7日間有効なクッキーとして保存
-                window.location.href = "/watch?v=" + encodeURIComponent(tValue);  // リダイレクト
+                window.location.href = "/watch?v=" + encodeURIComponent(tValue);  // クッキーの値を使ってリダイレクト
             }
     </script>
