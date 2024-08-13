@@ -136,7 +136,9 @@ window.onload = () => {
   style="outline:none;width:100%;background-color:#000;"
   playsinline
   poster="{% if proxy == 'True' %}/thumbnail?v={{ videoid }}{% else %}https://img.youtube.com/vi/{{ videoid }}/0.jpg{% endif %}"
-  data-setup='{"playbackRates": [0.5, 1, 1.5, 2]}'
+  data-setup='{"playbackRates": [0.1,0.5, 1, 1.5, 2, 2.5, 3, 5, 10]}'
+  controlBar: {skipButtons: {forward: 10,backward: 10}}
+  notSupportedMessage: '動画再生できません！'
 >
   {% for videourl in videourls %}
   <source src="{{ videourl }}" type="video/mp4">
@@ -158,7 +160,8 @@ window.onload = () => {
             </div>
             <div class="pure-g">
                 <div class="pure-u-1 pure-u-lg-1-5">
-                    <a href="{{ videourls[0] }}" target="_blank">ダウンロード</a><br>
+                    <a href="{{ videourls[0] }}" target="_blank">動画ダウンロード</a><br>
+                    <a href="https://img.youtube.com/vi/{{ videoid }}/0.jpg" target="_blank">サムネイル画像ダウンロード</a><br>
                     <a
                         href="javascript:{navigator.share({title: '動画を共有',text: '{{videotitle}}',url: location.protocol+'//'+document.domain+'/watch?v={{ videoid }}'+'&t='+Math.floor(document.getElementById('player').currentTime),})}">現時点の動画を共有</a><br>
                     <a
@@ -275,37 +278,7 @@ document.addEventListener('keydown', function(event) {
 <!-- FC2カウンター ここから --><script language="javascript" type="text/javascript" src="//counter1.fc2.com/counter.php?id=89505886"></script><noscript><img src="//counter1.fc2.com/counter_img.php?id=89505886" /></noscript><!-- FC2カウンター ここまで --><!-- FC2カウンター ここから -->
 同時接続数:<script language="javascript" type="text/javascript" src="//counter1.fc2.com/views.php?id=89505886"></script><noscript><img src="//counter1.fc2.com/counter_now.php?id=89505886" /></noscript>  <a href="/instance" >インスタンス一覧</a><a href="/build" >インスタンス作成方法</a><a href="https://scratch.mit.edu/" >　スクラッチでインスタンスの拡散してくれる人募集中,勝手に拡散してOK</a></div>
 
-<script>
-  // Video.jsの初期化
-  var player = videojs('player');
 
-  // 10秒巻き戻しボタンの作成
-  var rewindButton = document.createElement('button');
-  rewindButton.className = 'vjs-custom-button';
-  rewindButton.innerHTML = '⏪ 10秒';
-
-  rewindButton.onclick = function() {
-    var currentTime = player.currentTime();
-    player.currentTime(Math.max(0, currentTime - 10));
-  };
-
-  // 10秒飛ばすボタンの作成
-  var forwardButton = document.createElement('button');
-  forwardButton.className = 'vjs-custom-button';
-  forwardButton.innerHTML = '10秒 ⏩';
-
-  forwardButton.onclick = function() {
-    var currentTime = player.currentTime();
-    player.currentTime(Math.min(player.duration(), currentTime + 10));
-  };
-
-  // コントロールバーにボタンを追加
-  player.ready(function() {
-    var controlBar = player.controlBar.el();
-    controlBar.appendChild(rewindButton);
-    controlBar.appendChild(forwardButton);
-  });
-</script>
 <script>
 var player = videojs('player');
 player.play();
@@ -352,15 +325,6 @@ player.play();
 <script>
   var player = videojs('player');
   player.muteToggle();
-  const player = videojs('video', {
-controlBar: {
-skipButtons: {
-forward: 5,
-backward: 10
-}
-},
-playbackRates: [0.8, 1, 1.3, 1.5],
-notSupportedMessage: '動画再生できません！'
 </script>
 </div>
 </body>
