@@ -48,37 +48,7 @@ fixed {
 }
 </style>
 <script>
-        // クッキーに文字列を保存する関数
-        function setCookie(name, value, days) {
-            let expires = "";
-            if (days) {
-                let date = new Date();
-                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                expires = "; expires=" + date.toUTCString();
-            }
-            document.cookie = name + "=" + (value || "") + expires + "; path=/";
-        }
-
-        // URLのパラメーターから"t"の値を取得する関数
-        function getParameterByName(name, url = window.location.href) {
-            name = name.replace(/[\[\]]/g, "\\$&");
-            let regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-                results = regex.exec(url);
-            if (!results) return null;
-            if (!results[2]) return '';
-            return decodeURIComponent(results[2].replace(/\+/g, " "));
-        }
-
-        // ページが読み込まれたときに実行する関数
-        function saveParameterToCookie() {
-            let tValue = getParameterByName('t');
-            if (tValue) {
-                setCookie('t', tValue, 7);  // 7日間有効なクッキーとして保存
-            }
-        }
-
-        // ページ読み込み時にクッキーを保存
-        window.onload = saveParameterToCookie;
+    const player = videojs('player', {controlBar: {skipButtons: {forward: 5,backward: 10}},playbackRates: [0.5, 1, 1.5, 2],notSupportedMessage: '動画を再生できません ページをリロード(更新)してください'});
     </script>
 </head>
 
