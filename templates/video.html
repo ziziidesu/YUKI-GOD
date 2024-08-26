@@ -47,9 +47,6 @@ fixed {
     margin: auto;
 }
 </style>
-<script>
-    const player = videojs('player', {controlBar: {skipButtons: {forward: 5,backward: 10}},playbackRates: [0.5, 1, 1.5, 2],notSupportedMessage: '動画を再生できません ページをリロード(更新)してください'});
-    </script>
 </head>
 
 
@@ -122,7 +119,7 @@ window.onload = () => {
                     {% endfor %}
                 </video>
                 </video></div>
-            </div><div id="videobtn"><button onclick="toggleContent()">Video.js/Normal</button><button id="rewind-10s-btn">◀10s</button><button id="speedButton">2x Speed</button><button id="playButton">Play</button><button id="pauseButton">Pause</button><button id="normal-speed-btn">1x Speed</button><button id="forward-10s-btn">10s▶</button></div>
+            </div><div id="videobtn"><button onclick="toggleContent() style="text-align: center;">Video.js/Normal</button>
             <div class="h-box">
                 <h1>{{ videotitle }}</h1>
             </div>
