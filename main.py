@@ -7,8 +7,8 @@ import random
 import os
 import subprocess
 from cache import cache
-ver = "2.5.5" # バージョン    
-update = "再生速度とかのボタンを削除" # アップデート内容
+ver = "2.5.6" # バージョン    
+update = "いらないリンクの削除、UI変更" # アップデート内容
 token = "e4f5c13f-4f31-4ae1-ac5c-b3f1df232073" # hcaptchaのサイトキー
 max_api_wait_time = 3
 max_time = 10
