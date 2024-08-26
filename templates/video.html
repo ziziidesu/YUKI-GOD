@@ -47,6 +47,9 @@ fixed {
     margin: auto;
 }
 </style>
+<script>
+    const player = videojs('player', {controlBar: {skipButtons: {forward: 5,backward: 10}},playbackRates: [0.5, 1, 1.5, 2],notSupportedMessage: '動画を再生できません ページをリロード(更新)してください'});
+    </script>
 </head>
 
 
@@ -95,7 +98,7 @@ window.onload = () => {
         }
     </script>
             <div id="hide">
-                <video 
+                <video
   id="player"
   class="video-js vjs-default-skin on-video_player player-style-invidious"
   controls
@@ -119,7 +122,7 @@ window.onload = () => {
                     {% endfor %}
                 </video>
                 </video></div>
-            </div><div id="videobtn"><button onclick="toggleContent() style="text-align: center;">Video.js/Normal</button>
+            </div><div id="videobtn"><button onclick="toggleContent()">Video.js/Normal</button><button id="rewind-10s-btn">◀10s</button><button id="speedButton">2x Speed</button><button id="playButton">Play</button><button id="pauseButton">Pause</button><button id="normal-speed-btn">1x Speed</button><button id="forward-10s-btn">10s▶</button></div>
             <div class="h-box">
                 <h1>{{ videotitle }}</h1>
             </div>
@@ -242,7 +245,7 @@ document.addEventListener('keydown', function(event) {
 
 <div id="adspace">
 <!-- FC2カウンター ここから --><script language="javascript" type="text/javascript" src="//counter1.fc2.com/counter.php?id=89505886"></script><noscript><img src="//counter1.fc2.com/counter_img.php?id=89505886" /></noscript><!-- FC2カウンター ここまで --><!-- FC2カウンター ここから -->
-同時接続数:<script language="javascript" type="text/javascript" src="//counter1.fc2.com/views.php?id=89505886"></script><noscript><img src="//counter1.fc2.com/counter_now.php?id=89505886" /></noscript>  </div>
+同時接続数:<script language="javascript" type="text/javascript" src="//counter1.fc2.com/views.php?id=89505886"></script><noscript><img src="//counter1.fc2.com/counter_now.php?id=89505886" /></noscript>  <a href="/instance" >インスタンス一覧</a><a href="/build" >インスタンス作成方法</a><a href="https://scratch.mit.edu/" >　スクラッチでインスタンスの拡散してくれる人募集中,勝手に拡散してOK</a></div>
 
 
 <script>
@@ -283,6 +286,8 @@ player.play();
 <div id="fixed">
 
 </div>
+
+<a href="javascript:{alert("なんで見つけれるんだ")}">　　</a>
 <script>
   var player = videojs('player');
   player.muteToggle();
