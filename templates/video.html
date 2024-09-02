@@ -116,7 +116,7 @@ window.onload = () => {
                     {% endfor %}
                 </video>
                 </video></div>
-            </div><div id="videobtn"><button onclick="toggleContent()">Video.js/Normal</button><button id="rewind-10s-btn">◀10s</button><button id="speedButton">2x Speed</button><button id="playButton">Play</button><button id="pauseButton">Pause</button><button id="normal-speed-btn">1x Speed</button><button id="forward-10s-btn">10s▶</button></div>
+            </div><div id="videobtn"><button onclick="toggleContent()">Video.js/Normal</button></div>
             <div class="h-box">
                 <h1>{{ videotitle }}</h1>
             </div>
@@ -239,7 +239,7 @@ document.addEventListener('keydown', function(event) {
 
 <div id="adspace">
 <!-- FC2カウンター ここから --><script language="javascript" type="text/javascript" src="//counter1.fc2.com/counter.php?id=89505886"></script><noscript><img src="//counter1.fc2.com/counter_img.php?id=89505886" /></noscript><!-- FC2カウンター ここまで --><!-- FC2カウンター ここから -->
-同時接続数:<script language="javascript" type="text/javascript" src="//counter1.fc2.com/views.php?id=89505886"></script><noscript><img src="//counter1.fc2.com/counter_now.php?id=89505886" /></noscript>  <a href="/instance" >インスタンス一覧</a><a href="/build" >インスタンス作成方法</a><a href="https://scratch.mit.edu/" >　スクラッチでインスタンスの拡散してくれる人募集中,勝手に拡散してOK</a></div>
+同時接続数:<script language="javascript" type="text/javascript" src="//counter1.fc2.com/views.php?id=89505886"></script><noscript><img src="//counter1.fc2.com/counter_now.php?id=89505886" /></noscript>  </div>
 
 
 <script>
@@ -248,40 +248,12 @@ player.play();
 </script>
  
 
- <script>
-  var player = videojs('player');
-    // 2倍速ボタン
-    var speedButton = document.getElementById('speedButton');
-    speedButton.onclick = function() {
-      player.playbackRate(2);
-    };
 
-    // 再生ボタン
-    var playButton = document.getElementById('playButton');
-    playButton.onclick = function() {
-      player.play();
-    };
-
-    // 一時停止ボタン
-    var pauseButton = document.getElementById('pauseButton');
-    pauseButton.onclick = function() {
-      player.pause();
-    };
-    document.getElementById('normal-speed-btn').addEventListener('click', function() {
-     player.playbackRate(1);});
-    document.getElementById('rewind-10s-btn').addEventListener('click', function() {
-      player.currentTime(player.currentTime() - 10);});
-
-  // +10秒ボタンのクリックイベントを設定
-    document.getElementById('forward-10s-btn').addEventListener('click', function() {
-    player.currentTime(player.currentTime() + 10);});
-
-  </script>
 <div id="fixed">
 
 </div>
 
-<a href="javascript:{alert("なんで見つけれるんだ")}">　　</a>
+
 <script>
   var player = videojs('player');
   player.muteToggle();
