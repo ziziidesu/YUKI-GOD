@@ -7,8 +7,8 @@ import random
 import os
 import subprocess
 from cache import cache
-ver = "2.5.6.1" # バージョン    
-update = "UI変更" # アップデート内容
+ver = "2.5.7" # バージョン    
+update = "Q&A追加" # アップデート内容
 token = "e4f5c13f-4f31-4ae1-ac5c-b3f1df232073" # hcaptchaのサイトキー
 max_api_wait_time = 3
 max_time = 10
@@ -327,7 +327,7 @@ def home(response: Response,request: Request,yuki: Union[str] = Cookie(None)):
         response.set_cookie("yuki","True",max_age=60 * 60 * 24 * 7)
         return template("apd1.html",{"request": request,"ver":ver,"update":update})
     print(check_cokie(yuki))
-    return redirect("/hcaptcha")
+    return redirect("/")
 
 @app.get("/instance", response_class=HTMLResponse)
 def home(response: Response,request: Request,yuki: Union[str] = Cookie(None)):
@@ -335,14 +335,21 @@ def home(response: Response,request: Request,yuki: Union[str] = Cookie(None)):
         response.set_cookie("yuki","True",max_age=60 * 60 * 24 * 7)
         return template("ins.html",{"request": request})
     print(check_cokie(yuki))
-    return redirect("/hcaptcha")
+    return redirect("/")
 @app.get("/build", response_class=HTMLResponse)
 def home(response: Response,request: Request,yuki: Union[str] = Cookie(None)):
     if check_cokie(yuki):
         response.set_cookie("yuki","True",max_age=60 * 60 * 24 * 7)
         return template("build.html",{"request": request})
     print(check_cokie(yuki))
-    return redirect("/hcaptcha")
+    return redirect("/")
+@app.get("/qa", response_class=HTMLResponse)
+def home(response: Response,request: Request,yuki: Union[str] = Cookie(None)):
+    if check_cokie(yuki):
+        response.set_cookie("yuki","True",max_age=60 * 60 * 24 * 7)
+        return template("qanda.html",{"request": request})
+    print(check_cokie(yuki))
+    return redirect("/")
 
 
 @app.get("/hcaptcha", response_class=HTMLResponse)
