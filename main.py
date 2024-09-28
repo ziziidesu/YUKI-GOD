@@ -7,8 +7,8 @@ import random
 import os
 import subprocess
 from cache import cache
-ver = "2.5.7" # バージョン    
-update = "Q&A追加" # アップデート内容
+ver = "2.5.8" # バージョン    
+update = "about:blankモード追加" # アップデート内容
 token = "e4f5c13f-4f31-4ae1-ac5c-b3f1df232073" # hcaptchaのサイトキー
 max_api_wait_time = 3
 max_time = 10
