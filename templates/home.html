@@ -72,7 +72,7 @@ window.onload = () => {
         <div class="pure-g h-box" id="search-widget">
             <div class="pure-u-1" id="logo">
                 <h1 href="/" class="pure-menu-heading">Yuki YouTube Mod</h1><br>
-                <a href="/bbs">掲示板</a>
+                <a href="/bbs">掲示板</a><button onclick="openAboutBlank()">about:blankで開く</button><button onclick="opensplt()">Split View用モードで開く</button>
         </div>
             <div class="pure-u-1-4"></div>
             <div class="pure-u-1 pure-u-md-12-24 searchbar">
@@ -100,6 +100,36 @@ window.onload = () => {
         <div id="adspace" style="text-align: center;">
         アクセス数:<!-- FC2カウンター ここから --><script language="javascript" type="text/javascript" src="//counter1.fc2.com/counter.php?id=89505886"></script><noscript><img src="//counter1.fc2.com/counter_img.php?id=89505886" /></noscript><!-- FC2カウンター ここまで --><!-- FC2カウンター ここから -->
 同時接続数:<script language="javascript" type="text/javascript" src="//counter1.fc2.com/views.php?id=89505886"></script><noscript><img src="//counter1.fc2.com/counter_now.php?id=89505886" /></noscript> </div>
+
+<script>
+    function opensplt() {alert("次バージョンで公開予定")}
+    function openAboutBlank() {
+        const currentUrl = window.location.href; // ホストしているサイトのURLを取得
+        const aboutBlankWindow = window.open('about:blank', '_blank'); // about:blankを開く
+
+        // about:blankに埋め込む内容を組み立てる
+        const content = `
+            <html>
+                <head>
+                    <title>無題</title>
+                    <style>
+                        body { margin: 0; }
+                        iframe { width: 100vw; height: 100vh; border: none; }
+                    </style>
+                </head>
+                <body>
+                    <iframe src="${currentUrl}" allowfullscreen></iframe>
+                </body>
+            </html>
+        `;
+
+        // new windowが準備できるまで少し待機させる
+        setTimeout(() => {
+            aboutBlankWindow.document.write(content);
+            aboutBlankWindow.document.close(); // Documentを閉じて描画を完了する
+        }, 100); // 100ミリ秒待ってから内容を埋め込む
+    }
+</script>
     </body>
     
 
