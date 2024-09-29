@@ -211,7 +211,7 @@ def video(v:str,response: Response,request: Request,yuki: Union[str] = Cookie(No
     videoid = v
     t = get_data(videoid)
     response.set_cookie("yuki","True",max_age=60 * 60 * 24 * 7)
-    if check_cokie(yukisp)):
+    if check_cokie(yukisp):
         return template('videosplit.html', {"request": request,"videoid":videoid,"videourls":t[1],"res":t[0],"description":t[2],"videotitle":t[3],"authorid":t[4],"authoricon":t[6],"author":t[5],"proxy":proxy})
     return template('video.html', {"request": request,"videoid":videoid,"videourls":t[1],"res":t[0],"description":t[2],"videotitle":t[3],"authorid":t[4],"authoricon":t[6],"author":t[5],"proxy":proxy})
 
