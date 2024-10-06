@@ -7,12 +7,12 @@ import random
 import os
 import subprocess
 from cache import cache
-ver = "2.5.8" # バージョン    
-update = "about:blankモード追加,次バージョンでsplitview用モード追加" # アップデート内容
+ver = "2.5.9" # バージョン    
+update = "動画読み込みに使用するAPIサーバーを追加" # アップデート内容
 token = "e4f5c13f-4f31-4ae1-ac5c-b3f1df232073" # hcaptchaのサイトキー
 max_api_wait_time = 3
 max_time = 10
-apis = [r"https://invidious.private.coffee/",r"https://iv.datura.network/",r"https://invidious.jing.rocks/","https://iv.ggtyler.dev/","https://inv.tux.pizza/","https://invidious.privacyredirect.com/","https://inv.nadeko.net/"]
+apis = [r"https://invidious.private.coffee/",r"https://iv.datura.network/",r"https://invidious.jing.rocks/","https://iv.ggtyler.dev/","https://inv.tux.pizza/","https://invidious.privacyredirect.com/","https://inv.nadeko.net/","https://invidious.nerdvpn.de/","https://invidious.privacyredirect.com/","https://inv.nadeko.net/feed/"]
 url = requests.get(r'https://raw.githubusercontent.com/mochidukiyukimi/yuki-youtube-instance/main/instance.txt').text.rstrip()
 version = "1.0"
 adminannounce = requests.get(r'https://ztttas1.github.io/yuki00000000000000000000000000000/AN.txt').text.rstrip()
